@@ -1,0 +1,37 @@
+# ── Secrets ──────────────────────────
+.env
+
+# ── Python ───────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+
+# ── Node.js ──────────────────────────
+node_modules/
+dist/
+.vite/
+
+# ── IDE / Editor ─────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── OS ───────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Temporary / Duplicate dirs ───────
+frontend-electron/
+design_structure.md
+
+# ── Logs ─────────────────────────────
+*.log
+logs/
+
+# ── Claude ───────────────────────────
+.claude/
+
