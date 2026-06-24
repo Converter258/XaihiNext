@@ -30,6 +30,10 @@ ipcMain.handle(
   }
 );
 
+ipcMain.handle("health:check", async () => {
+  return await chatService.checkHealth();
+});
+
 app.whenReady().then(createWindow);
 
 app.on("window-all-closed", () => {

@@ -10,32 +10,34 @@ export const useChatStore = defineStore("chat", () => {
   const messages = ref<Message[]>([]);
   const isLoading = ref(false);
   const taskId = ref<string | null>(null);
+  const currentStep = ref<string>("idle");
+  const modelId = ref<string>("default");
 
-  /** 未来轮询进度时使用，目前空实现占位 */
-  function updateProgress(_step: string) {
-    // TODO: 接入长任务轮询时实现
+  function updateProgress(step: string) {
+    currentStep.value = step;
   }
 
   async function sendMessage(content: string) {
     isLoading.value = true;
+    currentStep.value = "thinking";
     messages.value.push({ role: "user", content });
 
     try {
       const result = await window.api.sendMessage(content);
       messages.value.push({ role: "assistant", content: result.answer });
       taskId.value = result.thread_id;
-      updateProgress("done");
+      updateProgress("idle");
     } catch (err: any) {
       const errorText = err?.message || String(err);
       messages.value.push({
         role: "assistant",
         content: `**Error:** ${errorText}`,
       });
-      updateProgress("error");
+      updateProgress("idle");
     } finally {
       isLoading.value = false;
     }
   }
 
-  return { messages, isLoading, taskId, sendMessage, updateProgress };
+  return { messages, isLoading, taskId, currentStep, modelId, sendMessage, updateProgress };
 });

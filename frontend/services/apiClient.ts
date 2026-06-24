@@ -13,4 +13,9 @@ export const chatService = {
     });
     return response.data;
   },
+
+  async checkHealth() {
+    const response = await apiClient.get("/v1/health");
+    return response.data;
+  },
 };

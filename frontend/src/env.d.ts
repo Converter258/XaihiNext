@@ -7,6 +7,10 @@ declare global {
         answer: string;
         thread_id: string;
       }>;
+      checkHealth(): Promise<{
+        status: string;
+        model: string;
+      }>;
     };
   }
 }

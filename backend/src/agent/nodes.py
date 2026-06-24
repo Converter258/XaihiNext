@@ -26,14 +26,9 @@ async def call_model(state: AgentState) -> dict:
     full_messages = [SystemMessage(content=SYSTEM_PROMPT)] + messages
     response: AIMessage = await llm_with_tools.ainvoke(full_messages)
 
-    if response.tool_calls:
-        next_step = "acting"
-    else:
-        next_step = "done"
-
     return {
         "messages": [response],
-        "current_step": next_step,
+        "current_step": "thinking",
         "step_count": step_count + 1,
     }
 

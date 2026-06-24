@@ -1,11 +1,13 @@
 <template>
   <div id="app-root">
     <ChatView />
+    <StatusBar />
   </div>
 </template>
 
 <script setup lang="ts">
 import ChatView from "./components/ChatView.vue";
+import StatusBar from "./components/StatusBar.vue";
 </script>
 
 <style>

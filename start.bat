@@ -33,6 +33,12 @@ if not exist "%FRONTEND%\node_modules\.bin" (
 
 :: --- 2. Backend ---
 echo.
+echo [*] Releasing port 8000 if occupied ...
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":8000.*LISTENING" 2^>nul') do (
+    taskkill /PID %%a /F >nul 2>&1
+    echo     Killed old process PID=%%a on port 8000
+)
+
 echo [*] Starting backend server ...
 echo     A new CMD window will open for the backend.
 echo     Close that window to stop the server.
