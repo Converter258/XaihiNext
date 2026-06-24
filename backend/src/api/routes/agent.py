@@ -14,7 +14,7 @@ TIMEOUT_SECONDS = 60
 
 class ChatRequest(BaseModel):
     thread_id: Optional[str] = None
-    message: str
+    messages: list
     attachments: list = Field(default_factory=list)
 
 
@@ -25,7 +25,7 @@ class ChatResponse(BaseModel):
 
 def _build_initial_state(req: ChatRequest) -> dict[str, Any]:
     return {
-        "messages": [{"role": "user", "content": req.message}],
+        "messages": req.messages,
         "current_step": "idle",
         "step_count": 0,
     }
