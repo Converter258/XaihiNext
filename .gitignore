@@ -24,8 +24,7 @@ dist/
 .DS_Store
 Thumbs.db
 
-# ── Temporary / Duplicate dirs ───────
-frontend-electron/
+# ── Temporary / Reference ────────────
 design_structure.md
 
 # ── Logs ─────────────────────────────

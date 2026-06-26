@@ -21,11 +21,8 @@ if [ ! -f "$ROOT/.env" ]; then
     info "created .env from .env.example"
 fi
 
-# Pick working frontend dir
+# Frontend dir
 FRONTEND_DIR="$ROOT/frontend"
-if [ ! -d "$FRONTEND_DIR/node_modules/.bin" ]; then
-    FRONTEND_DIR="$ROOT/frontend-electron"
-fi
 
 # ── 1. Backend ────────────────────────────────────────
 info "Starting backend (uvicorn port 8000)..."

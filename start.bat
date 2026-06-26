@@ -22,14 +22,8 @@ if not exist ".env" (
     echo [OK] .env exists
 )
 
-:: --- 1. Pick working frontend dir ---
+:: --- 1. Frontend dir ---
 set "FRONTEND=frontend"
-if not exist "%FRONTEND%\node_modules\.bin" (
-    if exist "frontend-electron\node_modules\.bin" (
-        set "FRONTEND=frontend-electron"
-        echo [*] Using fallback: frontend-electron
-    )
-)
 
 :: --- 2. Backend ---
 echo.
