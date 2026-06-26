@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, AsyncIterator
 
 
 class BaseAgentExecutor(ABC):
@@ -13,4 +13,9 @@ class BaseAgentExecutor(ABC):
     @abstractmethod
     async def arun(self, initial_state: dict[str, Any]) -> dict[str, Any]:
         """异步执行 graph，适用于 FastAPI async 路由。"""
+        ...
+
+    @abstractmethod
+    async def astream(self, initial_state: dict[str, Any]) -> AsyncIterator[dict]:
+        """流式执行 graph，逐事件产出 token 与工具调用。"""
         ...

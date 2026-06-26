@@ -12,6 +12,7 @@ llm = ChatOpenAI(
     openai_api_key=settings.OPENAI_API_KEY,
     base_url=settings.BASE_URL,
     temperature=0,
+    streaming=True,
 )
 llm_with_tools = llm.bind_tools(registry.get_all())
 
